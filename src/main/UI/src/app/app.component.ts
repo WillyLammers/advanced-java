@@ -18,6 +18,10 @@ export class AppComponent implements OnInit{
   displayMessageEnglish$!: Observable<string>
   displayMessageFrench$!: Observable<string>
 
+  // B3b
+  announcePresentation$!: Observable<string>
+
+
   constructor(private httpClient:HttpClient){}
 
   private baseURL:string='http://localhost:8080';
@@ -35,6 +39,9 @@ export class AppComponent implements OnInit{
       // B1b
       this.displayMessageFrench$ = this.httpClient.get(this.baseURL + '/welcome?lang=fr-CA', {responseType: 'text'} )
       this.displayMessageEnglish$ = this.httpClient.get(this.baseURL + '/welcome?lang=en-US', {responseType: 'text'} )
+
+      // B3b
+      this.announcePresentation$ = this.httpClient.get(this.baseURL + '/presentation', {responseType: 'text'} )
 
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
